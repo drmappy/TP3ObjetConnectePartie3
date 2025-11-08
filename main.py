@@ -1,5 +1,17 @@
-from gpiozero import LEDCharDisplay, LEDCharFont
+from gpiozero import LEDCharDisplay, LEDCharFont, Motor, Button
 from time import sleep
+pin_fact = PiGPIOFactory()
+
+
+servo = AngularServo(
+    17,
+    initial_angle=0.0,
+    min_angle=0.0,
+    max_angle=180.0,
+    min_pulse_width=0.0005,
+    max_pulse_width=0.0025,
+    pin_factory=pin_fact
+)
 
 my_font = LEDCharFont({
     ' ': (0, 0, 0, 0, 0, 0, 0),
@@ -40,11 +52,36 @@ my_font = LEDCharFont({
     '9': (1, 1, 1, 1, 0, 1, 1),
     '0': (1, 1, 1, 1, 1, 1, 0),
 })
+
 (A, B, C, D, E, F, G, DP) = (20, 21, 19, 13, 6, 16, 12, 26)
 display = LEDCharDisplay(A, B, C, D, E, F, G, dp=DP, font=my_font, active_high=False)
+
+motor = Motor(27, 22)
+motor.forward()
+
+def red_method():
+    print("red")
+
+def blue_method():
+    print("blue")
+
+blue = Button(5)
+red = Button(25)
+
+blue.when_activated(blue_method)
+red.when_activated(red_method)
 
 for char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ':
     display.value = char
     sleep(1)
+servo.angle = 0.0
+sleep(1)
+servo.angle = 45.0
+sleep(1)
+servo.angle = 90.0
+sleep(1)
+servo.angle = 135.0
+sleep(1)
+servo.angle = 180.0
 
 display.off()
