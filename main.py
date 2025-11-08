@@ -14,17 +14,27 @@ servo = AngularServo(
     pin_factory=pin_fact
 )
 motor = Motor(27, 22)
+print(motor.is_active)
 motor.forward()
+print(motor.is_active)
 
-servo.angle = 0.0
-sleep(1)
-servo.angle = 45.0
-sleep(1)
-servo.angle = 90.0
-sleep(1)
-servo.angle = 135.0
-sleep(1)
-servo.angle = 180.0
+servo.min()
+sleep(4)
+print(motor.is_active)
+servo.mid()
+sleep(4)
+servo.max()
+sleep(4)
+while(True):
+    servo.angle = 0.0
+    sleep(1)
+    servo.angle = 45.0
+    sleep(1)
+    servo.angle = 90.0
+    sleep(1)
+    servo.angle = 135.0
+    sleep(1)
+    servo.angle = 180.0
 
 my_font = LEDCharFont({
     ' ': (0, 0, 0, 0, 0, 0, 0),
