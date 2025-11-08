@@ -13,6 +13,18 @@ servo = AngularServo(
     max_pulse_width=0.0025,
     pin_factory=pin_fact
 )
+motor = Motor(27, 22)
+motor.forward()
+
+servo.angle = 0.0
+sleep(1)
+servo.angle = 45.0
+sleep(1)
+servo.angle = 90.0
+sleep(1)
+servo.angle = 135.0
+sleep(1)
+servo.angle = 180.0
 
 my_font = LEDCharFont({
     ' ': (0, 0, 0, 0, 0, 0, 0),
@@ -57,8 +69,7 @@ my_font = LEDCharFont({
 (A, B, C, D, E, F, G, DP) = (20, 21, 19, 13, 6, 16, 12, 26)
 display = LEDCharDisplay(A, B, C, D, E, F, G, dp=DP, font=my_font, active_high=False)
 
-motor = Motor(27, 22)
-motor.forward()
+
 
 def red_method():
     print("red")
@@ -66,15 +77,16 @@ def red_method():
 def blue_method():
     print("blue")
 
-blue = Button(5)
-red = Button(25)
+blue = Button(25)
+red = Button(5)
 
-blue.when_activated(blue_method)
-red.when_activated(red_method)
+blue.when_pressed = blue_method
+red.when_pressed = red_method
 
 for char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ':
     display.value = char
     sleep(1)
+
 servo.angle = 0.0
 sleep(1)
 servo.angle = 45.0
