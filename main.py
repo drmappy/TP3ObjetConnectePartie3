@@ -24,7 +24,7 @@ RED_BUTTON_PIN=5
 
 adc = ADC_Composant()
 
-if(adc.detecteI2C(0x4b)): # Le détecte 
+if(adc.detecteI2C(0x4b)): 
     adc = ADS7830() 
 else: 
     sys.exit("I2C non connecté sur votre Pi et/ou ADS7830")
@@ -87,6 +87,7 @@ def read_joystick():
     global servo, motor
     trigger_x = adc.lectureAnalogique(0)
     trigger_y = adc.lectureAnalogique(1)
+    print(trigger_x, " : ",trigger_y)
     SOUTH = trigger_y < 55 and trigger_x >= 55 and trigger_x <= 200
     NORTH = trigger_y > 200 and trigger_x >= 55 and trigger_x <= 200
     WEST = trigger_x > 200 and trigger_y >= 55 and trigger_y <= 200
@@ -117,6 +118,8 @@ def servo_down():
     else:
         servo_angle -= SERVO_TICK_ANGLE
     servo.angle = servo_angle
+    motor.backward()
+
 def servo_up():
     global servo_angle, servo
     if servo_angle + SERVO_TICK_ANGLE > SERVO_MAXIMUM_ANGLE:
@@ -124,6 +127,7 @@ def servo_up():
     else:
         servo_angle += SERVO_TICK_ANGLE
     servo.angle = servo_angle
+    motor.forward()
     
     
 
