@@ -1,5 +1,6 @@
-from gpiozero import LEDCharDisplay, LEDCharFont, Motor, Button
+from gpiozero import LEDCharDisplay, LEDCharFont, Motor, Button, AngularServo
 from time import sleep
+from gpiozero.pins.pigpio import PiGPIOFactory 
 pin_fact = PiGPIOFactory()
 
 
