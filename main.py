@@ -1,6 +1,17 @@
 from gpiozero import LEDCharDisplay, LEDCharFont, Motor, Button, AngularServo
 from time import sleep
 from gpiozero.pins.pigpio import PiGPIOFactory 
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)  # Use BCM numbering
+GPIO.setwarnings(False)
+
+pins = [20, 21, 19, 13, 6, 16, 12, 26]
+
+for pin in pins:
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, GPIO.HIGH)
+
 pin_fact = PiGPIOFactory()
 
 
@@ -26,15 +37,14 @@ sleep(4)
 servo.max()
 sleep(4)
 while(True):
-    servo.angle = 0.0
+    motor.forward()
+    print(motor.is_active)
     sleep(1)
-    servo.angle = 45.0
+    motor.backward()
+    print(motor.is_active)
+    motor.stop()
     sleep(1)
-    servo.angle = 90.0
-    sleep(1)
-    servo.angle = 135.0
-    sleep(1)
-    servo.angle = 180.0
+
 
 my_font = LEDCharFont({
     ' ': (0, 0, 0, 0, 0, 0, 0),
