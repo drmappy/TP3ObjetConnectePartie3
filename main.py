@@ -82,13 +82,13 @@ my_font = LEDCharFont({
     '0':(1, 1, 1, 1, 1, 1, 1, 0),
     '1':(0, 1, 1, 0, 0, 0, 0, 0),
     '2':(1, 1, 0, 1, 1, 0, 1, 0),
-    '3':(1, 1, 1, 1, 0, 0, 0, 1),
-    '4':(0, 1, 1, 0, 0, 1, 1, 1),
-    '5':(1, 0, 1, 1, 0, 1, 1, 1),
-    '6':(1, 0, 1, 1, 1, 1, 1, 1),
+    '3':(1, 1, 1, 1, 0, 0, 0, 0),
+    '4':(0, 1, 1, 0, 0, 1, 1, 0),
+    '5':(1, 0, 1, 1, 0, 1, 1, 0),
+    '6':(1, 0, 1, 1, 1, 1, 1, 0),
     '7':(1, 1, 1, 0, 0, 0, 0, 0),
-    '8':(1, 1, 1, 1, 1, 1, 1, 1),
-    '9':(1, 1, 1, 1, 1, 0, 1, 1),
+    '8':(1, 1, 1, 1, 1, 1, 1, 0),
+    '9':(1, 1, 1, 1, 1, 0, 1, 0),
 })
 
 display = LEDCharDisplay(SEVEN_SEGMENT_DISPLAY_PIN_A, SEVEN_SEGMENT_DISPLAY_PIN_B, SEVEN_SEGMENT_DISPLAY_PIN_C, SEVEN_SEGMENT_DISPLAY_PIN_D, SEVEN_SEGMENT_DISPLAY_PIN_E, SEVEN_SEGMENT_DISPLAY_PIN_F, SEVEN_SEGMENT_DISPLAY_PIN_G, font=my_font, active_high=False)
