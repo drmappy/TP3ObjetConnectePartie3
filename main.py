@@ -69,6 +69,9 @@ def servo_up():
     display_servo_angle()
     
 def display_servo_angle():
+    if servo_angle == 0:
+        display_char(int(1))
+        return
     display_char(int(6 - 180 / servo_angle))
 
 # Move button initialization to the global scope
