@@ -141,19 +141,19 @@ def servo_up():
     
     
 
+if __name__ == "__main__":
+    blue = Button(BLUE_BUTTON_PIN)
+    red = Button(RED_BUTTON_PIN)
 
-blue = Button(BLUE_BUTTON_PIN)
-red = Button(RED_BUTTON_PIN)
+    blue.when_pressed = servo_up
+    red.when_pressed = servo_down
 
-blue.when_pressed = servo_up
-red.when_pressed = servo_down
+    boolean_value = False
+    for char in '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ':
+        boolean_value = not boolean_value
+        #A. B C. D
+        display_char(char=char, point=boolean_value)
+        read_joystick()
+        sleep(1)
 
-boolean_value = False
-for char in '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ':
-    boolean_value = not boolean_value
-    #A. B C. D
-    display_char(char=char, point=boolean_value)
-    read_joystick()
-    sleep(1)
-
-display.off()
+    display.off()
