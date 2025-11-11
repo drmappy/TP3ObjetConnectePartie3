@@ -69,7 +69,7 @@ def servo_up():
     display_servo_angle()
     
 def display_servo_angle():
-    display_char(int(180 / servo_angle))
+    display_char(int(6 - 180 / servo_angle))
 
 # Move button initialization to the global scope
 blue = Button(BLUE_BUTTON_PIN)
