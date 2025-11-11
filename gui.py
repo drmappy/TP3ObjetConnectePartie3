@@ -1,4 +1,5 @@
 import tkinter as tk
+from main import display_char
 
 def on_servo_buttonMinus_click():
     print(f"Servo Button pressed! change = -45  degrees")
@@ -14,6 +15,8 @@ def on_motor_buttonMinus_click():
     
 def on_textbox_button_click():
     input_text = textBox.get()
+    for char in input_text:
+        display_char(char)
     print("Input text:", input_text)
 
 root = tk.Tk()
