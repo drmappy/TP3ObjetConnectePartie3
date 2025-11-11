@@ -1,18 +1,23 @@
 import tkinter as tk
-from main import display_char
+from gpiozero import Motor
+from main import display_char, motor, servo_up, servo_down
 from time import sleep
 
 def on_servo_buttonMinus_click():
     print(f"Servo Button pressed! change = -45  degrees")
+    servo_down()
     
 def on_servo_buttonPlus_click():
     print(f"Servo Button pressed! change = +45 degrees")
+    servo_up()
     
 def on_motor_buttonPlus_click():
     print(f"Motor direction: +")
+    motor.forward()
     
 def on_motor_buttonMinus_click():
     print(f"Motor direction: -")
+    motor.backward()
     
 def on_textbox_button_click():
     input_text = textBox.get()
