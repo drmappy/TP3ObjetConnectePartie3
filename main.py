@@ -133,9 +133,13 @@ def read_joystick():
     elif EAST:
         servo_down()
     elif SOUTH:
-        motor.backward()
+        motor.backward(0.4)
+        sleep(1)
+        motor.stop()
     elif NORTH :
-        motor.forward()        
+        motor.forward(0.4)
+        sleep(1)
+        motor.stop()        
 
 def display_char(char, point = False):
     global display
