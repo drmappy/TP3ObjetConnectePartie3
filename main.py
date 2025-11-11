@@ -128,7 +128,6 @@ def servo_down():
     else:
         servo_angle -= SERVO_TICK_ANGLE
     servo.angle = servo_angle
-    motor.backward()
 
 def servo_up():
     global servo_angle, servo
@@ -137,7 +136,6 @@ def servo_up():
     else:
         servo_angle += SERVO_TICK_ANGLE
     servo.angle = servo_angle
-    motor.forward()
     
     
 
