@@ -1,5 +1,6 @@
 import tkinter as tk
 from main import display_char
+from time import sleep
 
 def on_servo_buttonMinus_click():
     print(f"Servo Button pressed! change = -45  degrees")
@@ -15,8 +16,11 @@ def on_motor_buttonMinus_click():
     
 def on_textbox_button_click():
     input_text = textBox.get()
-    for char in input_text:
-        display_char(char)
+    for i, char in enumerate(input_text):
+        has_next_point = i + 1 < len(input_text) and input_text[i + 1] == '.'
+        if char != '.':
+            display_char(char, point=has_next_point)
+            sleep(0.5)
     print("Input text:", input_text)
 
 root = tk.Tk()
