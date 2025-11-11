@@ -1,7 +1,9 @@
 import tkinter as tk
 from gpiozero import Motor
-from main import display_char, motor, servo_up, servo_down, read_joystick
+from main import display_char, motor, servo_up, servo_down, read_joystick, configure_buttons
 from time import sleep
+
+configure_buttons()
 
 def on_servo_buttonMinus_click():
     print(f"Servo Button pressed! change = -45  degrees")
