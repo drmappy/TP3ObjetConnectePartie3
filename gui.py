@@ -12,21 +12,17 @@ def joystick_loop():
 configure_buttons()
 
 def on_servo_buttonMinus_click():
-    print(f"Servo Button pressed! change = -45  degrees")
     servo_down()
     
 def on_servo_buttonPlus_click():
-    print(f"Servo Button pressed! change = +45 degrees")
     servo_up()
     
 def on_motor_buttonPlus_click():
-    print(f"Motor direction: +")
     motor.forward(0.4)
     sleep(1)
     motor.stop()
     
 def on_motor_buttonMinus_click():
-    print(f"Motor direction: -")
     motor.backward(0.4)
     sleep(1)
     motor.stop()
@@ -38,7 +34,7 @@ def on_textbox_button_click():
         if char != '.':
             display_char(char, point=has_next_point)
             sleep(0.5)
-    print("Input text:", input_text)
+    display_char(' ')
 
 root = tk.Tk()
 root.title("Tp3 partie 3")

@@ -123,7 +123,6 @@ def read_joystick():
     global servo, motor
     trigger_x = adc.lectureAnalogique(0)
     trigger_y = adc.lectureAnalogique(1)
-    print(trigger_x, " : ",trigger_y)
     SOUTH = trigger_y < 55 and trigger_x >= 55 and trigger_x <= 200
     NORTH = trigger_y > 200 and trigger_x >= 55 and trigger_x <= 200
     WEST = trigger_x > 200 and trigger_y >= 55 and trigger_y <= 200
