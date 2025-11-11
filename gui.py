@@ -19,13 +19,13 @@ def on_servo_buttonPlus_click():
     
 def on_motor_buttonPlus_click():
     print(f"Motor direction: +")
-    motor.forward()
+    motor.forward(0.4)
     sleep(1)
     motor.stop()
     
 def on_motor_buttonMinus_click():
     print(f"Motor direction: -")
-    motor.backward()
+    motor.backward(0.4)
     sleep(1)
     motor.stop()
     
