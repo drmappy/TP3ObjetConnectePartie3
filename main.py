@@ -50,6 +50,32 @@ servo = AngularServo(
     pin_factory=pin_fact
 )
 motor = Motor(MOTOR_PIN_1, MOTOR_PIN_2)
+def servo_down():
+    global servo_angle, servo
+    if servo_angle - SERVO_TICK_ANGLE < SERVO_MINIMAL_ANGLE:
+        servo_angle = SERVO_MAXIMUM_ANGLE
+    else:
+        servo_angle -= SERVO_TICK_ANGLE
+    servo.angle = servo_angle
+
+def servo_up():
+    global servo_angle, servo
+    if servo_angle + SERVO_TICK_ANGLE > SERVO_MAXIMUM_ANGLE:
+        servo_angle = SERVO_MINIMAL_ANGLE
+    else:
+        servo_angle += SERVO_TICK_ANGLE
+    servo.angle = servo_angle
+# Move button initialization to the global scope
+blue = Button(BLUE_BUTTON_PIN)
+red = Button(RED_BUTTON_PIN)
+
+# Configure button actions
+def configure_buttons():
+    blue.when_pressed = servo_up
+    red.when_pressed = servo_down
+
+# Call this function to set up buttons
+configure_buttons()
 
 my_font = LEDCharFont({
     ' ': (0, 0, 0, 0, 0, 0, 0, 0),
@@ -121,28 +147,9 @@ def display_char(char, point = False):
         GPIO.output(SEVEN_SEGMENT_DISPLAY_PIN_DP, GPIO.HIGH)
     display.value = char
 
-def servo_down():
-    global servo_angle, servo
-    if servo_angle - SERVO_TICK_ANGLE < SERVO_MINIMAL_ANGLE:
-        servo_angle = SERVO_MAXIMUM_ANGLE
-    else:
-        servo_angle -= SERVO_TICK_ANGLE
-    servo.angle = servo_angle
 
-def servo_up():
-    global servo_angle, servo
-    if servo_angle + SERVO_TICK_ANGLE > SERVO_MAXIMUM_ANGLE:
-        servo_angle = SERVO_MINIMAL_ANGLE
-    else:
-        servo_angle += SERVO_TICK_ANGLE
-    servo.angle = servo_angle
     
 
-    blue = Button(BLUE_BUTTON_PIN)
-    red = Button(RED_BUTTON_PIN)
-
-    blue.when_pressed = servo_up
-    red.when_pressed = servo_down
 if __name__ == "__main__":
 
     boolean_value = False
