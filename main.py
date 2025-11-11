@@ -78,7 +78,17 @@ my_font = LEDCharFont({
     'W': (1, 0, 1, 1, 1, 0, 0, 0),
     'X': (1, 0, 0, 1, 0, 0, 1, 0),
     'Y': (0, 1, 0, 1, 0, 1, 1, 0),
-    'Z': (1, 1, 0, 1, 1, 0, 1, 0)
+    'Z': (1, 1, 0, 1, 1, 0, 1, 0),
+    '0':(1, 1, 1, 1, 1, 1, 1, 0),
+    '1':(0, 1, 1, 0, 0, 0, 0, 0),
+    '2':(1, 1, 0, 1, 1, 0, 1, 0),
+    '3':(1, 1, 1, 1, 0, 0, 0, 1),
+    '4':(0, 1, 1, 0, 0, 1, 1, 1),
+    '5':(1, 0, 1, 1, 0, 1, 1, 1),
+    '6':(1, 0, 1, 1, 1, 1, 1, 1),
+    '7':(1, 1, 1, 0, 0, 0, 0, 0),
+    '8':(1, 1, 1, 1, 1, 1, 1, 1),
+    '9':(1, 1, 1, 1, 1, 0, 1, 1),
 })
 
 display = LEDCharDisplay(SEVEN_SEGMENT_DISPLAY_PIN_A, SEVEN_SEGMENT_DISPLAY_PIN_B, SEVEN_SEGMENT_DISPLAY_PIN_C, SEVEN_SEGMENT_DISPLAY_PIN_D, SEVEN_SEGMENT_DISPLAY_PIN_E, SEVEN_SEGMENT_DISPLAY_PIN_F, SEVEN_SEGMENT_DISPLAY_PIN_G, font=my_font, active_high=False)
@@ -139,7 +149,7 @@ blue.when_pressed = servo_up
 red.when_pressed = servo_down
 
 boolean_value = False
-for char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ':
+for char in '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ':
     boolean_value = not boolean_value
     #A. B C. D
     display_char(char=char, point=boolean_value)
