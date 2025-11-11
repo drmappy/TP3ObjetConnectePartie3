@@ -57,6 +57,7 @@ def servo_down():
     else:
         servo_angle -= SERVO_TICK_ANGLE
     servo.angle = servo_angle
+    display_servo_angle()
 
 def servo_up():
     global servo_angle, servo
@@ -65,6 +66,11 @@ def servo_up():
     else:
         servo_angle += SERVO_TICK_ANGLE
     servo.angle = servo_angle
+    display_servo_angle()
+    
+def display_servo_angle():
+    display_char(int(180 / servo_angle))
+
 # Move button initialization to the global scope
 blue = Button(BLUE_BUTTON_PIN)
 red = Button(RED_BUTTON_PIN)
