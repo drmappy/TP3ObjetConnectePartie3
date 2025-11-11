@@ -69,10 +69,18 @@ def servo_up():
     display_servo_angle()
     
 def display_servo_angle():
-    if servo_angle == 0:
-        display_char(int(1))
-        return
-    display_char(int(6 - 180 / servo_angle))
+    match servo_angle:
+        case 0:
+            display_char(int(1))
+        case 45:
+            display_char(int(2))
+        case 90:
+            display_char(int(3))
+        case 135:
+            display_char(int(4))
+        case 180:
+            display_char(int(5))
+
 
 # Move button initialization to the global scope
 blue = Button(BLUE_BUTTON_PIN)
