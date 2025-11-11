@@ -137,14 +137,13 @@ def servo_up():
         servo_angle += SERVO_TICK_ANGLE
     servo.angle = servo_angle
     
-    
 
-if __name__ == "__main__":
     blue = Button(BLUE_BUTTON_PIN)
     red = Button(RED_BUTTON_PIN)
 
     blue.when_pressed = servo_up
     red.when_pressed = servo_down
+if __name__ == "__main__":
 
     boolean_value = False
     for char in '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ':
