@@ -14,13 +14,22 @@ textBox = tk.Entry(top_frame, width=30)
 textInputButton.pack(side=tk.LEFT)
 textBox.pack(side=tk.LEFT, fill=tk.X, expand=False, padx=(10,0))
 
+middle_frame = tk.Frame(frame)
+middle_frame.pack(side=tk.TOP, fill=tk.X, padx=5, pady=(0,5))
+
+servoPlusButton = tk.Button(middle_frame, text="Servo tourne de -45 degres", bg="red")
+servoMinusButton = tk.Button(middle_frame, text="Servo tourne de +45 degres", bg="blue")
+
+servoMinusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(0,30))
+servoPlusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(30,0))
+
 bottom_frame = tk.Frame(frame)
-bottom_frame.pack(side=tk.TOP, fill=tk.X, padx=5, pady=(0,5))
+bottom_frame.pack(side=tk.TOP, fill=tk.X, padx=5, pady=5)
 
-redButton = tk.Button(bottom_frame, text="Servo tourne de -45 degres", bg="red")
-blueButton = tk.Button(bottom_frame, text="Servo tourne de +45 degres", bg="blue")
+motorPlusButton = tk.Button(bottom_frame, text="Moteur tourne en sens +")
+motorMinusButton = tk.Button(bottom_frame, text="Moteur tourne en sens -")
 
-blueButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(0,30))
-redButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(30,0))
+motorMinusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(0,40))
+motorPlusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(35,0))
 
 root.mainloop()
