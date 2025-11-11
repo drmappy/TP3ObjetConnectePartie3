@@ -20,10 +20,14 @@ def on_servo_buttonPlus_click():
 def on_motor_buttonPlus_click():
     print(f"Motor direction: +")
     motor.forward()
+    sleep(1)
+    motor.stop()
     
 def on_motor_buttonMinus_click():
     print(f"Motor direction: -")
     motor.backward()
+    sleep(1)
+    motor.stop()
     
 def on_textbox_button_click():
     input_text = textBox.get()
@@ -66,7 +70,7 @@ motorMinusButton = tk.Button(bottom_frame, text="Moteur tourne en sens -", comma
 motorMinusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(0,40))
 motorPlusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(35,0))
 
-thread = tk.Thread(target=joystick_loop, daemon=True)
+thread = threading.Thread(target=joystick_loop, daemon=True)
 thread.start()
 
 root.mainloop()
