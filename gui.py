@@ -2,6 +2,12 @@ import tkinter as tk
 from gpiozero import Motor
 from main import display_char, motor, servo_up, servo_down, read_joystick, configure_buttons
 from time import sleep
+import threading
+
+def joystick_loop():
+    while True:
+        read_joystick()
+        sleep(0.1)
 
 configure_buttons()
 
@@ -47,8 +53,8 @@ textBox.pack(side=tk.LEFT, fill=tk.X, expand=False, padx=(10,0))
 middle_frame = tk.Frame(frame)
 middle_frame.pack(side=tk.TOP, fill=tk.X, padx=5, pady=(0,5))
 
-servoPlusButton = tk.Button(middle_frame, text="Servo tourne de -45 degres", bg="red", command=on_servo_buttonPlus_click)
-servoMinusButton = tk.Button(middle_frame, text="Servo tourne de +45 degres", bg="blue", command=on_servo_buttonMinus_click)
+servoPlusButton = tk.Button(middle_frame, text="Servo tourne de -45 degres", bg="red", command=on_servo_buttonMinus_click)
+servoMinusButton = tk.Button(middle_frame, text="Servo tourne de +45 degres", bg="blue", command=on_servo_buttonPlus_click)
 
 servoMinusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(0,30))
 servoPlusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(30,0))
@@ -62,5 +68,7 @@ motorMinusButton = tk.Button(bottom_frame, text="Moteur tourne en sens -", comma
 motorMinusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(0,40))
 motorPlusButton.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=(35,0))
 
-while root.mainloop():
-    read_joystick()
+thread = tk.Thread(target=joystick_loop, daemon=True)
+thread.start()
+
+root.mainloop()
